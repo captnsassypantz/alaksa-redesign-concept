@@ -1,0 +1,20 @@
+{
+  "name": "alaksa-redesign-concept",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Jessica"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/captnsassypantz/alaksa-redesign-concept",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7"
+  }
+}

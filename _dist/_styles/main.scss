@@ -1,0 +1,8 @@
+// bower:scss
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+// inject:app
+@import "_src/_styles/scss/global.scss";
+@import "_src/_styles/scss/layout.scss";
+// endinject
