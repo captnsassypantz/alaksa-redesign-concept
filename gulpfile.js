@@ -13,7 +13,7 @@ var browserSync = require('browser-sync').create();
 
 gulp.task('sass', function(){
 
-  var injectAppFiles = gulp.src('_src/_styles/scss/*.scss', {read: false});
+  var injectAppFiles = gulp.src('src/styles/scss/*.scss', {read: false});
 
   function transformFilepath(filepath) {
     return '@import "' + filepath + '";';
@@ -26,13 +26,13 @@ gulp.task('sass', function(){
     addRootSlash: false
   };
 
-  return gulp.src('_src/_styles/main.scss')
+  return gulp.src('src/styles/main.scss')
     .pipe(wiredep())
     .pipe(autoprefixer())
-    //return gulp.src('_src/_styles/scss/*.scss') //Globbing sass files
+    //return gulp.src('src/styles/scss/*.scss') //Globbing sass files
     .pipe(inject(injectAppFiles, injectAppOptions))
     .pipe(sass())
-    .pipe(gulp.dest('_dist'))
+    .pipe(gulp.dest(''))
     .pipe(browserSync.stream());
 });
 
@@ -43,15 +43,15 @@ gulp.task('sass', function(){
 // });
 
 gulp.task('html', ['sass'], function(){
-  var injectFiles = gulp.src(['_dist/main.css']);
+  var injectFiles = gulp.src(['dist/main.css']);
 
   //Remove the path to the css file, since theyre in the same folder
   var injectOptions = {
     addRootSlash: false,
-    ignorePath: ['src', '']
+    ignorePath: ['src', 'dist']
   };
 
-  return gulp.src('_src/index.html')
+  return gulp.src('src/index.html')
   .pipe(inject(injectFiles, injectOptions))
   .pipe(gulp.dest(''))
 });
@@ -63,11 +63,11 @@ gulp.task('serve', ['html'], function() {
         //proxy: "index.html"
         server: {
             baseDir: "./"
-            // baseDir: "_dist"
+            // baseDir: "dist"
         }
     });
 
-    gulp.watch('_src/_styles/scss/*.scss', ['sass']);
+    gulp.watch('src/styles/scss/*.scss', ['sass']);
     gulp.watch("*.html").on('change', browserSync.reload);
 });
 
