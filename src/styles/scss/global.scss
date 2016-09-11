@@ -10,7 +10,7 @@ body{
   &::after{
     content: '';
     position: absolute;
-    height: 645px;
+    height: 506px;
     width: 100%;
     bottom: 0;
     background-size: contain;
@@ -36,6 +36,10 @@ header{
         color: white;
         letter-spacing: 2px;
         padding: 10px;
+
+        a{
+          color: white;
+        }
       }
     }
   }
