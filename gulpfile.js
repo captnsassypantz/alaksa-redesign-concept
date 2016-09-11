@@ -48,12 +48,12 @@ gulp.task('html', ['sass'], function(){
   //Remove the path to the css file, since theyre in the same folder
   var injectOptions = {
     addRootSlash: false,
-    ignorePath: ['src', '_dist']
+    ignorePath: ['src', '']
   };
 
   return gulp.src('_src/index.html')
   .pipe(inject(injectFiles, injectOptions))
-  .pipe(gulp.dest('_dist'))
+  .pipe(gulp.dest(''))
 });
 
 // Static Server + watching scss/html files
@@ -62,8 +62,8 @@ gulp.task('serve', ['html'], function() {
     browserSync.init({
         //proxy: "index.html"
         server: {
-            // baseDir: "./"
-            baseDir: "_dist"
+            baseDir: "./"
+            // baseDir: "_dist"
         }
     });
 
