@@ -5861,3 +5861,7 @@ img {
   line-height: 145px; }
   .col-md-6 h2 span {
     font-size: 170px; }
+
+footer a {
+  color: white;
+  text-decoration: underline; }
