@@ -67,14 +67,14 @@ gulp.task('inject', ['sass'], function(){
   var target = gulp.src('index.html');
 
   //Remove the path to the css file, since theyre in the same folder
-  // var injectOptions = {
-  //   addRootSlash: false,
-  //   // ignorePath: ['src', 'dist']
-  // };
+  var injectOptions = {
+    addRootSlash: false,
+    // ignorePath: ['src', 'dist']
+  };
 
   // return gulp.src('src/index.html')
   // .pipe(inject(sources, injectOptions))
-  return target.pipe(inject(sources))
+  return target.pipe(inject(sources, injectOptions))
   // .pipe(inject(sources))
   .pipe(gulp.dest(''))
 });
