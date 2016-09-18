@@ -1,23 +1,40 @@
+
 @import 'https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Oswald:400,700|Playfair+Display';
 
-
 body{
-  background-image: url('dist/imgs/bg-color.jpg');
+  // background-image: url('dist/imgs/bg-color.jpg');
+//   background: rgba(36,95,105,1);
+// background: -moz-linear-gradient(top, rgba(36,95,105,1) 0%, rgba(36,95,105,1) 0%, rgba(43,138,157,1) 50%);
+// background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(36,95,105,1)), color-stop(0%, rgba(36,95,105,1)), color-stop(50%, rgba(43,138,157,1)));
+// background: -webkit-linear-gradient(top, rgba(36,95,105,1) 0%, rgba(36,95,105,1) 0%, rgba(43,138,157,1) 50%);
+// background: -o-linear-gradient(top, rgba(36,95,105,1) 0%, rgba(36,95,105,1) 0%, rgba(43,138,157,1) 50%);
+// background: -ms-linear-gradient(top, rgba(36,95,105,1) 0%, rgba(36,95,105,1) 0%, rgba(43,138,157,1) 50%);
+// background: linear-gradient(to bottom, rgba(36,95,105,1) 0%, rgba(36,95,105,1) 0%, rgba(43,138,157,1) 50%);
+// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#245f69', endColorstr='#2b8a9d', GradientType=0 );
+
+background-color: #0d6c79;
   font-family: 'Josefin Sans', sans-serif;
   font-family: 'Oswald', sans-serif;
   font-family: 'Playfair Display', serif;
 
-  &::after{
-    content: '';
-    position: absolute;
-    height: 506px;
-    width: 100%;
-    bottom: 0;
-    background-size: contain;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-image: url("dist/imgs/bg-mountainrange.png");
-  }
+  color: white;
+
+  // &::after{
+  //   content: '';
+  //   position: absolute;
+  //   height: 600px;
+  //   width: 100%;
+  //   bottom: 0;
+  //   background-size: cover;
+  //   background-position: bottom;
+  //   background-repeat: no-repeat;
+  //   background-image: url("imgs/bg-mountainrange.png");
+  // }
+}
+
+#content{
+  height: 65vh;
+  overflow: scroll;
 }
 
 .container{
@@ -53,11 +70,11 @@ img{
 #logo{
   margin: 40px auto;
   display: block;
-  max-width: 150px;
+  max-width: 100px;
 }
 
 .carousel{
-  max-width: 700px;
+  // max-width: 700px;
 
   img{
     width: 100%;
