@@ -5816,11 +5816,24 @@ button.close {
     display: none !important; } }
 
 body {
-  background-color: #0d6c79;
-  font-family: 'Josefin Sans', sans-serif;
-  font-family: 'Oswald', sans-serif;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#043344+0,04465e+40,08607b+100 */
+  background: #043344;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #043344 0%, #04465e 40%, #08607b 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #043344 0%, #04465e 40%, #08607b 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #043344 0%, #04465e 40%, #08607b 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#043344', endColorstr='#08607b',GradientType=0 );
+  /* IE6-9 */
   font-family: 'Playfair Display', serif;
   color: white; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px; }
 
 #content {
   height: 65vh;
@@ -5858,9 +5871,43 @@ img {
   font-family: BebasBold;
   font-size: 155px;
   text-align: center;
-  line-height: 145px; }
+  line-height: 145px;
+  margin-top: 0px; }
   .col-md-6 h2 span {
-    font-size: 170px; }
+    font-size: 170px;
+    line-height: 125px;
+    display: block; }
+
+.welcomemsg {
+  text-align: justify; }
+
+section > div {
+  margin: 10px 0; }
+
+section.section-3 .right {
+  border-bottom: 10px solid white;
+  padding: 0; }
+  section.section-3 .right::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 75px solid transparent;
+    border-right: 75px solid transparent;
+    border-top: 18px solid white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto; }
+
+section.section-3 .bottom {
+  background-image: url("imgs/hunting.png");
+  background-position: center center;
+  background-size: contain;
+  padding: 15px 10px;
+  text-align: justify; }
+
+.carousel .item img {
+  max-height: 400px; }
 
 footer a {
   color: white;

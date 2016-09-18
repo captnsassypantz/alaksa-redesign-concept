@@ -2,21 +2,16 @@
 @import 'https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Oswald:400,700|Playfair+Display';
 
 body{
-  // background-image: url('dist/imgs/bg-color.jpg');
-//   background: rgba(36,95,105,1);
-// background: -moz-linear-gradient(top, rgba(36,95,105,1) 0%, rgba(36,95,105,1) 0%, rgba(43,138,157,1) 50%);
-// background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(36,95,105,1)), color-stop(0%, rgba(36,95,105,1)), color-stop(50%, rgba(43,138,157,1)));
-// background: -webkit-linear-gradient(top, rgba(36,95,105,1) 0%, rgba(36,95,105,1) 0%, rgba(43,138,157,1) 50%);
-// background: -o-linear-gradient(top, rgba(36,95,105,1) 0%, rgba(36,95,105,1) 0%, rgba(43,138,157,1) 50%);
-// background: -ms-linear-gradient(top, rgba(36,95,105,1) 0%, rgba(36,95,105,1) 0%, rgba(43,138,157,1) 50%);
-// background: linear-gradient(to bottom, rgba(36,95,105,1) 0%, rgba(36,95,105,1) 0%, rgba(43,138,157,1) 50%);
-// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#245f69', endColorstr='#2b8a9d', GradientType=0 );
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#043344+0,04465e+40,08607b+100 */
+  background: #043344; /* Old browsers */
+  background: -moz-linear-gradient(top,  #043344 0%, #04465e 40%, #08607b 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #043344 0%,#04465e 40%,#08607b 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #043344 0%,#04465e 40%,#08607b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#043344', endColorstr='#08607b',GradientType=0 ); /* IE6-9 */
 
-background-color: #0d6c79;
-  font-family: 'Josefin Sans', sans-serif;
-  font-family: 'Oswald', sans-serif;
+  // font-family: 'Josefin Sans', sans-serif;
+  // font-family: 'Oswald', sans-serif;
   font-family: 'Playfair Display', serif;
-
   color: white;
 
   // &::after{
@@ -30,6 +25,12 @@ background-color: #0d6c79;
   //   background-repeat: no-repeat;
   //   background-image: url("imgs/bg-mountainrange.png");
   // }
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 #content{
@@ -83,9 +84,63 @@ img{
     font-size: 155px;
     text-align: center;
     line-height: 145px;
+    margin-top: 0px;
 
     span{
       font-size: 170px;
+      line-height: 125px;
+      display: block;
+    }
+  }
+}
+
+.welcomemsg{
+  text-align: justify;
+}
+
+section{
+  &>div{
+    margin: 10px 0;
+  }
+}
+section.section-3{
+  .right{
+    border-bottom: 10px solid white;
+    padding: 0;
+    // margin-top: 10px;
+
+    &::after{
+      content: '';
+    	width: 0;
+    	height: 0;
+    	border-left: 75px solid transparent;
+    	border-right: 75px solid transparent;
+    	border-top: 18px solid white;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+  }
+  .bottom{
+    background-image: url('imgs/hunting.png');
+    background-position: center center;
+    background-size: contain;
+    padding: 15px 10px;
+    text-align: justify;
+  }
+}
+
+.carousel{
+
+  .carousel-indicators{
+    li{
+      // background-color:
+    }
+  }
+  .item{
+    img{
+      max-height: 400px;
     }
   }
 }
