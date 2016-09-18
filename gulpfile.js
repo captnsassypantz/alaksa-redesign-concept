@@ -2,17 +2,18 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
-
-var inject = require('gulp-inject');
-
-//To watch for sass file injections
-var wiredep = require('wiredep').stream;
-
+var inject = require('gulp-inject'); //Inject our files
+var wiredep = require('wiredep').stream; //To watch for file injections
 var browserSync = require('browser-sync').create();
-
-
 var imagemin = require('gulp-imagemin'); //Optimize our images
 var cache = require('gulp-cache'); //Cache optimzed images
+
+var bowerFiles = require('main-bower-files');
+
+var config = {
+     sassPath: './src/styles',
+     bowerDir: './bower_components' 
+}
 
 
 gulp.task('sass', function(){
@@ -41,8 +42,8 @@ gulp.task('sass', function(){
     .pipe(browserSync.stream());
 });
 
-gulp.task('icons', function() { 
-    return gulp.src(config.bowerDir + '/fontawesome/fonts/**.*') 
+gulp.task('fonts', function() { 
+    return gulp.src(config.bowerDir + '/font-awesome/fonts/**.*') 
         .pipe(gulp.dest('src/fonts/')); 
 });
 
@@ -52,21 +53,21 @@ gulp.task('images', function(){
   .pipe(gulp.dest('src/imgs'))
 });
 
-// gulp.task('images', function() {
-//   return gulp.src('src/imgs/*.+(png|jpg|gif|svg)')
-// 	.pipe(plugins.cache(plugins.imagemin({ optimizationLevel: 7, progressive: true, interlaced: true })))
-// 	.pipe(gulp.dest('src/imgs'))
-// 	.pipe(plugins.notify({ message: 'Images task complete' }));
-// });
-// gulp.task('js', function(){
-//
-// });
+gulp.task('js', function(){
+
+});
+
+gulp.task('wiredep', function () {
+  gulp.src('index.html')
+    .pipe(wiredep())
+    .pipe(gulp.dest(''));
+});
 
 gulp.task('inject', ['sass'], function(){
   var sources = gulp.src(['src/main.css', 'src/main.js'], {read: false});
   var target = gulp.src('index.html');
 
-  //Remove the path to the css file, since theyre in the same folder
+  //Remove the leading slash
   var injectOptions = {
     addRootSlash: false,
     // ignorePath: ['src', 'dist']

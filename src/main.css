@@ -5843,13 +5843,21 @@ header .menu ul {
       color: white; }
 
 img {
-  max-width: 1000px;
-  height: auto; }
+  width: 100%; }
 
 #logo {
   margin: 40px auto;
   display: block;
   max-width: 100px; }
 
-.carousel img {
-  width: 100%; }
+@font-face {
+  font-family: BebasBold;
+  src: url("fonts/bebasneue_bold.otf"); }
+
+.col-md-6 h2 {
+  font-family: BebasBold;
+  font-size: 155px;
+  text-align: center;
+  line-height: 145px; }
+  .col-md-6 h2 span {
+    font-size: 170px; }

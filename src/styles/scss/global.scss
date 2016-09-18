@@ -63,8 +63,7 @@ header{
 }
 
 img{
-  max-width: 1000px;
-  height: auto;
+  width: 100%;
 }
 
 #logo{
@@ -73,10 +72,20 @@ img{
   max-width: 100px;
 }
 
-.carousel{
-  // max-width: 700px;
+@font-face {
+    font-family: BebasBold;
+    src: url('fonts/bebasneue_bold.otf');
+}
 
-  img{
-    width: 100%;
+.col-md-6{
+  h2{
+    font-family: BebasBold;
+    font-size: 155px;
+    text-align: center;
+    line-height: 145px;
+
+    span{
+      font-size: 170px;
+    }
   }
 }
