@@ -5919,6 +5919,10 @@ section.section-3 .bottom {
 .carousel .item img {
   max-height: 400px; }
 
-footer a {
-  color: white;
-  text-decoration: underline; }
+footer {
+  z-index: 9999;
+  position: relative;
+  color: black; }
+  footer a {
+    color: black;
+    text-decoration: underline; }
