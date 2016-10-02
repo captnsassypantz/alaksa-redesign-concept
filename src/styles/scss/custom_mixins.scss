@@ -1,0 +1,5 @@
+@mixin background($position, $size, $repeat){
+  background-position: $position;
+  background-size: $size;
+  background-repeat: $repeat;
+}

@@ -7,7 +7,9 @@ var wiredep = require('wiredep').stream; //To watch for file injections
 var browserSync = require('browser-sync').create();
 var imagemin = require('gulp-imagemin'); //Optimize our images
 var cache = require('gulp-cache'); //Cache optimzed images
-
+var uncss = require('gulp-uncss'); //Remove unnused CSS
+var concat = require('gulp-concat');
+var nano = require('gulp-cssnano');
 var bowerFiles = require('main-bower-files');
 
 var config = {
@@ -15,15 +17,12 @@ var config = {
      bowerDir: './bower_components' 
 }
 
-
 gulp.task('sass', function(){
-
-  var injectAppFiles = gulp.src('src/styles/scss/*.scss', {read: false});
+  var injectAppFiles = gulp.src(['src/styles/scss/*.scss', '!src/styles/scss/_*.scss'], {read: false});
 
   function transformFilepath(filepath) {
     return '@import "' + filepath + '";';
   }
-
   var injectAppOptions = {
     transform: transformFilepath,
     starttag: '// inject:app',
@@ -32,29 +31,20 @@ gulp.task('sass', function(){
   };
 
   return gulp.src('src/styles/main.scss')
+  .pipe(sourcemaps.init())
     .pipe(wiredep())
     .pipe(autoprefixer())
     //return gulp.src('src/styles/scss/*.scss') //Globbing sass files
     .pipe(inject(injectAppFiles, injectAppOptions))
     .pipe(sass())
-    .pipe(sourcemaps.write())
+    // .pipe(concat('main.css'))
+        .pipe(uncss({
+            html: ['index.html']
+        }))
+        // .pipe(nano())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('src'))
     .pipe(browserSync.stream());
-});
-
-gulp.task('fonts', function() { 
-    return gulp.src(config.bowerDir + '/font-awesome/fonts/**.*') 
-        .pipe(gulp.dest('src/fonts/')); 
-});
-
-gulp.task('images', function(){
-  return gulp.src('src/imgs/*.+(png|jpg|gif|svg)')
-  .pipe(cache(imagemin()))
-  .pipe(gulp.dest('src/imgs'))
-});
-
-gulp.task('js', function(){
-
 });
 
 gulp.task('wiredep', function () {
@@ -62,6 +52,22 @@ gulp.task('wiredep', function () {
     .pipe(wiredep())
     .pipe(gulp.dest(''));
 });
+
+gulp.task('fonts', function() { 
+    return gulp.src(config.bowerDir + '/font-awesome/scss/**.*') 
+        .pipe(gulp.dest('src/styles/scss')); 
+});
+
+//Optimize Images
+gulp.task('images', function(){
+  return gulp.src('src/imgs/*.+(png|jpg|gif|svg)')
+  .pipe(cache(imagemin()))
+  .pipe(gulp.dest('src/imgs'))
+});
+
+gulp.task('js', function(){});
+
+
 
 gulp.task('inject', ['sass'], function(){
   var sources = gulp.src(['src/main.css', 'src/main.js'], {read: false});
@@ -73,16 +79,12 @@ gulp.task('inject', ['sass'], function(){
     // ignorePath: ['src', 'dist']
   };
 
-  // return gulp.src('src/index.html')
-  // .pipe(inject(sources, injectOptions))
   return target.pipe(inject(sources, injectOptions))
-  // .pipe(inject(sources))
   .pipe(gulp.dest(''))
 });
 
 // Static Server + watching scss/html files
 gulp.task('serve', ['inject'], function() {
-
     browserSync.init({
         //proxy: "index.html"
         server: {
@@ -93,9 +95,12 @@ gulp.task('serve', ['inject'], function() {
 
     gulp.watch('src/styles/scss/*.scss', ['sass']);
     gulp.watch('src/js/main.js', ['js']);
-    gulp.watch('index.html', ['inject']);
+    gulp.watch('index.html', ['sass']);
     gulp.watch("*.html").on('change', browserSync.reload);
 });
 
+
 // Default Task
 gulp.task('default', ['serve']);
+
+gulp.task('optimize', ['images']);

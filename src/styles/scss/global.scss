@@ -1,5 +1,6 @@
 
 @import 'https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Oswald:400,700|Playfair+Display';
+// @import "../..";
 
 body{
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#043344+0,04465e+40,08607b+100 */
@@ -20,10 +21,8 @@ body{
     height: 500px;
     width: 100%;
     bottom: 0;
-    background-size: cover;
-    background-position: bottom;
-    background-repeat: no-repeat;
     background-image: url("imgs/bg-mountainrange_trim.png");
+        @include background(bottom, cover, no-repeat);
   }
 }
 
@@ -124,8 +123,7 @@ section.section-3{
   }
   .bottom{
     background-image: url('imgs/hunting.png');
-    background-position: center center;
-    background-size: contain;
+    @include background(center center, contain, no-repeat);
     padding: 15px 10px;
     text-align: justify;
   }
@@ -146,8 +144,12 @@ section.section-3{
 }
 
 footer{
+  z-index: 9999;
+  position: relative;
+  color: black;
+
   a{
-    color: white;
+    color: black;
     text-decoration: underline;
   }
 }
