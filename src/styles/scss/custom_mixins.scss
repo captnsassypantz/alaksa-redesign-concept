@@ -3,3 +3,9 @@
   background-size: $size;
   background-repeat: $repeat;
 }
+
+@mixin flex_align(){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

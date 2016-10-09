@@ -38,9 +38,9 @@ gulp.task('sass', function(){
     .pipe(inject(injectAppFiles, injectAppOptions))
     .pipe(sass())
     // .pipe(concat('main.css'))
-        .pipe(uncss({
-            html: ['index.html']
-        }))
+        //.pipe(uncss({
+          //  html: ['index.html']
+      //  }))
         // .pipe(nano())
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('src'))

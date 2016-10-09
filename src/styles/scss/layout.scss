@@ -4,4 +4,24 @@
 
 .make{
   background-image: url('imgs/cork-wallet.png');
+  @include background(center, contain, repeat);
+
+  &> div > div{
+    @include background(center, cover, no-repeat);
+    @include flex_align();
+    height: 160px;
+    @include make-sm-column-offset(1);
+  }
+}
+
+#relax{
+  background-image: url('imgs/relax.png');
+}
+
+#learn{
+  background-image: url('imgs/learn.png');
+}
+
+#explore{
+  background-image: url('imgs/relax.png');
 }
