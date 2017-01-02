@@ -68,7 +68,8 @@ gulp.task('images', function(){
 });
 
 gulp.task('js', function(){
-
+  return gulp.src(config.bowerDir + '/foundation/js/foundation.js') 
+      .pipe(gulp.dest('src/js')); 
 });
 
 
