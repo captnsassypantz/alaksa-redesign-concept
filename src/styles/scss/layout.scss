@@ -10,7 +10,7 @@
     @include background(center, cover, no-repeat);
     @include flex_align();
     height: 160px;
-    @include make-sm-column-offset(1);
+    // @include make-sm-column-offset(.2);
   }
 }
 

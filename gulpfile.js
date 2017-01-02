@@ -36,7 +36,9 @@ gulp.task('sass', function(){
     .pipe(autoprefixer())
     //return gulp.src('src/styles/scss/*.scss') //Globbing sass files
     .pipe(inject(injectAppFiles, injectAppOptions))
-    .pipe(sass())
+    .pipe(sass({
+      includePaths: ['bower_components/foundation/scss', 'bower_components/font-awesome/font-awesome.scss']
+    }))
     // .pipe(concat('main.css'))
         //.pipe(uncss({
           //  html: ['index.html']
@@ -65,7 +67,9 @@ gulp.task('images', function(){
   .pipe(gulp.dest('src/imgs'))
 });
 
-gulp.task('js', function(){});
+gulp.task('js', function(){
+
+});
 
 
 
