@@ -11,6 +11,7 @@ var uncss = require('gulp-uncss'); //Remove unnused CSS
 var concat = require('gulp-concat');
 var nano = require('gulp-cssnano');
 var bowerFiles = require('main-bower-files');
+var es = require('event-stream'); //Allows us to have multiple sources in a gulp task
 
 var config = {
      sassPath: './src/styles',
@@ -68,8 +69,19 @@ gulp.task('images', function(){
 });
 
 gulp.task('js', function(){
-  return gulp.src(config.bowerDir + '/foundation/js/foundation.js') 
-      .pipe(gulp.dest('src/js')); 
+  //This copies the file and places it on our directory
+  // return gulp.src(config.bowerDir + '/foundation/js/foundation.js', config.bowerDir + '/foundation/js/vendor/modernizr.js') 
+  //     .pipe(gulp.dest('src/js')); 
+  return es.concat(
+    gulp.src(config.bowerDir + '/foundation/js/foundation.js')
+      .pipe(gulp.dest('src/js')),
+    gulp.src(config.bowerDir + '/foundation/js/vendor/modernizr.js')
+        .pipe(gulp.dest('src/js')),
+    gulp.src(config.bowerDir + '/jquery/dist/jquery.js')
+      .pipe(gulp.dest('src/js')),
+    gulp.src(config.bowerDir + '/foundation/js/vendor/fastclick.js')
+      .pipe(gulp.dest('src/js'))
+  );
 });
 
 
